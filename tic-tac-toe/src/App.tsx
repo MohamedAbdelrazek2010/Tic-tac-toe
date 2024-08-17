@@ -1,8 +1,9 @@
 function App() {
   return (
     <main>
-      <div>
-        <h1>Hello World</h1>
+      <div className="board">
+       <h1>Fuck you!!!</h1>
+       <p>Hello world</p>
       </div>
     </main>
   );
