@@ -7,6 +7,7 @@ type CellProps = {
   cells: string[];
   setCells: Dispatch<SetStateAction<string[]>>;
   cell: string;
+  winner: string;
 };
 
 export default function Cell({
@@ -15,10 +16,16 @@ export default function Cell({
   id,
   cells,
   setCells,
-  cell
+  cell,
+  winner
 }: CellProps) {
 
   const handleClick = () => {
+
+    if (winner) {
+      return;
+    }
+
     const notTaken = !cells[id];
 
     if (notTaken) {
