@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  height: 300px;
+  width: 300px;
+}
+
+.square {
+  height: 100px;
+  width: 100px;
+  border: 1px solid #333;
+  box-sizing: border-box;
+}
