@@ -7,10 +7,15 @@ function App() {
 
   console.log(cells);
 
+  const reset = () => {
+    setCells(Array(9).fill(""))
+    setTurn("circle")
+  }
+
   return (
     <main className="container">
       <div className="board">
-        {cells.map((_, index) => {
+        {cells.map((cell, index) => {
           return ( 
             <Cell 
               id={index} 
@@ -19,9 +24,17 @@ function App() {
               setTurn={setTurn}
               cells={cells}
               setCells={setCells}
-            /> 
+              cell={cell}
+            />
           )
         })}
+        <br />
+        <button type="button" className="reset" onClick={reset}>
+          reset
+        </button>
+      </div>
+      <div className="status">
+          {`its now ${turn} turn`}
       </div>
     </main>
   );

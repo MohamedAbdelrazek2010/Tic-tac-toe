@@ -6,6 +6,7 @@ type CellProps = {
   setTurn: Dispatch<SetStateAction<string>>;
   cells: string[];
   setCells: Dispatch<SetStateAction<string[]>>;
+  cell: string;
 };
 
 export default function Cell({
@@ -14,30 +15,37 @@ export default function Cell({
   id,
   cells,
   setCells,
+  cell
 }: CellProps) {
-  const handleClick = (_: any) => {
-    let notChecked = !cells[id];
 
-    const changeCell = (cellToChange: string) => {
-      const copiedCells = [...cells];
-      copiedCells[id] = cellToChange;
-      setCells(copiedCells);
+  const handleClick = () => {
+    const notTaken = !cells[id];
 
-    };
-    if (notChecked) {
-      if (turn == "circle") {
-        changeCell("circle");
+    if (notTaken) {
+      if (turn === "circle") {
+        handleCellChange("circle");
         setTurn("cross");
-      } else if (turn == "cross") {
-        changeCell("circle");
-        setTurn("cross");
+      } else if (turn === "cross") {
+        handleCellChange("cross");
+        setTurn("circle");
       }
     }
+  }
+
+  const handleCellChange = (cellToChange: string) => {
+    let copyCells = [...cells];
+    copyCells[id] = cellToChange;
+    setCells(copyCells);
   };
 
   return (
     <>
-      <div className="square" onClick={handleClick}></div>
+      <div className="square" onClick={handleClick}>
+        <div className={cell}>
+          {cell ? (cell === "circle" ? "O" : "X") : "" }
+        </div>
+      </div>
     </>
   );
+
 }
